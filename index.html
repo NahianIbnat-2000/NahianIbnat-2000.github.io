@@ -52,7 +52,7 @@
     border-bottom:1px solid var(--line);
   }
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-  .brand{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--paper)}
+  .brand{font-family:var(--display);font-size:16px;font-weight:600;letter-spacing:-.01em;color:var(--paper)}
   .brand .dot{color:var(--signal)}
   .navlinks{display:flex;gap:26px}
   .navlinks a{font-size:13.5px;color:var(--fog);text-decoration:none;transition:color .15s}
@@ -155,10 +155,11 @@
     .pgrid{grid-template-columns:1fr 1fr}
     .card.span2{grid-column:1 / -1}
   }
-  .pgroup-label{grid-column:1 / -1;font-family:var(--mono);font-size:12px;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--signal);margin:34px 0 2px;padding-top:18px;border-top:1px solid var(--line)}
-  .pgroup-label:first-of-type{margin-top:10px;padding-top:0;border-top:0}
-  .pgroup-sub{grid-column:1 / -1;font-size:13.5px;color:var(--fog-2);margin:0 0 8px}
+  .pgroup-label{grid-column:1 / -1;font-family:var(--display);font-size:22px;font-weight:600;letter-spacing:-.01em;
+    text-transform:none;color:var(--signal);margin:42px 0 2px;padding-top:24px;border-top:2px solid var(--line)}
+  .pgroup-label:first-of-type{margin-top:14px;padding-top:0;border-top:0}
+  .pgroup-sub{grid-column:1 / -1;font-size:14px;color:var(--fog-2);margin:0 0 12px}
+  @media(min-width:760px){.pgroup-label{font-size:25px}}
 
   /* ---------- education / skills ---------- */
   .edu-item{padding:20px 0;border-top:1px solid var(--line)}
@@ -212,7 +213,7 @@
 
 <nav>
   <div class="wrap">
-    <span class="brand"></span>
+    <span class="brand">Nahian Ibnat</span>
     <button class="navtoggle" aria-label="Menu" onclick="document.getElementById('nl').classList.toggle('open')">≡</button>
     <div class="navlinks" id="nl">
       <a href="#about">About</a>
@@ -267,7 +268,7 @@
         <span class="when">2024 – 2026 · Vienna / Budapest</span>
       </div>
       <span class="role">MA in Economics, Data &amp; Policy</span>
-      <span class="note"><span class="nl">Data &amp; Finance tracks · Advanced Certificate in International Political Economy.</span><span class="nl">Thesis on the sovereign green bond greenium in emerging markets (causal design, reproducible pipeline, deployed interactive companion).</span><span class="nl"><b>Coursework:</b> Fixed Income Analysis · Deep Learning · Banking &amp; Financial Institutions · Prediction &amp; Machine Learning · Causal Inference · Data Engineering 1–2.</span></span>
+      <span class="note"><span class="nl">Data &amp; Finance tracks · Advanced Certificate in International Political Economy.</span><span class="nl">Thesis, <a href="https://nahianibnat-2000.github.io/Thesis/" target="_blank" rel="noopener"><i>When Governments Say "Green" — Do Bond Markets Believe Them?</i></a>, on the sovereign green bond greenium in emerging markets (causal design, reproducible pipeline, deployed interactive companion).</span><span class="nl"><b>Coursework:</b> Fixed Income Analysis · Deep Learning · Banking &amp; Financial Institutions · Prediction &amp; Machine Learning · Causal Inference · Data Engineering 1–2.</span></span>
     </div>
 
     <div class="edu-item">
@@ -297,8 +298,8 @@
           <span class="tag live">● live demos</span>
         </div>
         <h3>When Governments Say "Green" — Do Bond Markets Believe Them?</h3>
-        <div class="ctx">MA Thesis · CEU · Sovereign green bond greenium in emerging markets</div>
-        <p class="desc">A twin-bond stacked difference-in-differences design (Baker et al. 2022) testing whether climate-news tone shifts the greenium on sovereign green bonds. GDELT V2Tone sentiment, five specifications (M1–M5) with HC3/PCSE errors, event studies, Granger causality, and European robustness checks. Built end to end: data, models, write-up, and a deployed product layer with a policy game, live simulator, and research-assistant chatbot.</p>
+        <div class="ctx">Spring 2026 · MA Thesis · CEU · sovereign green bond greenium, emerging markets</div>
+        <p class="desc">A twin-bond stacked difference-in-differences design (Baker et al. 2022) testing whether climate-news tone shifts the greenium on sovereign green bonds. GDELT V2Tone sentiment, five specifications (M1–M5) with HC3/PCSE errors, event studies, Granger causality, and robustness checks on European pairs. Built end to end: data, models, write-up, and a deployed product layer with a policy game, live simulator, and research-assistant chatbot.</p>
         <div class="result"><b>Null across all three hypotheses</b> in the Asian sample · VIX the only robust daily driver (0.35–0.48 bp/SD) · European greeniums of <b>−1.82 bp</b> (Germany) and <b>−2.80 bp</b> (Denmark)</div>
         <div class="links">
           <a class="btn go" href="https://nahianibnat-2000.github.io/Thesis/" target="_blank" rel="noopener">▶ Explore the thesis site</a>
@@ -316,7 +317,7 @@
           <span class="tag">Finance</span><span class="tag">Portfolio Theory</span><span class="tag">Factor Models</span>
         </div>
         <h3>Mean-Variance Optimization &amp; Factor Models</h3>
-        <div class="ctx">Trading &amp; Portfolio Theory · CEU · SPY / BND / GLD, 1993–2025</div>
+        <div class="ctx">Fall 2025 · Trading &amp; Portfolio Theory · CEU · SPY / BND / GLD, 1993–2025</div>
         <p class="desc">Built excess-return series for SPY, BND, and GLD; derived the covariance matrix, Sharpe ratios, and the optimal risky portfolio via Solver. Estimated CAPM, Fama-French 3- and 6-factor, momentum, BAB, and liquidity loadings for individual assets (AAPL, VTV, AGTHX, Berkshire) to separate alpha from factor exposure.</p>
         <div class="result">Mean-variance frontier · Sharpe · CAPM / FF3 / FF6 / MOM / BAB alpha decomposition</div>
         <div class="links">
@@ -330,7 +331,7 @@
           <span class="tag">Time Series</span><span class="tag">Macro</span><span class="tag">EViews</span>
         </div>
         <h3>Forecasting Austrian Macro</h3>
-        <div class="ctx">Theory &amp; Practice of Forecasting · CEU · 1985–2025, quarterly</div>
+        <div class="ctx">Fall 2025 · Theory &amp; Practice of Forecasting · CEU · 1985–2025, quarterly</div>
         <p class="desc">Leading-indicator assessment (OECD/EC sentiment vs. GDP and consumption) plus a full ARIMA–VAR–BVAR horse-race for unemployment, inflation, GDP growth, and the 3-month rate. Recursive pseudo-out-of-sample evaluation on RMSE, Theil's U, and direction-of-change, testing the interest rate as endogenous vs. exogenous.</p>
         <div class="result">ARIMA vs VAR vs BVAR · recursive OOS · ESI explains ≈50% of QoQ GDP growth</div>
       </article>
@@ -341,7 +342,7 @@
           <span class="tag">Machine Learning</span><span class="tag">Finance</span><span class="tag">Cost-sensitive</span>
         </div>
         <h3>Predicting Fast-Growing Firms</h3>
-        <div class="ctx">Data Analysis 3 · CEU · administrative panel 2010–2015</div>
+        <div class="ctx">Winter 2025 · Data Analysis 3 · CEU · admin panel 2010–2015</div>
         <p class="desc">Logit, CART, and Random Forest to flag high-growth firms by log sales growth, with probability-threshold tuning and a cost-sensitive loss function to minimise expected business loss. Results validated separately across manufacturing and services.</p>
         <div class="result">RF / CART / Logit · expected-loss threshold tuning · sector-split validation</div>
         <div class="links">
@@ -355,7 +356,7 @@
           <span class="tag">Econometrics</span><span class="tag">Model Selection</span><span class="tag">R</span>
         </div>
         <h3>Earnings Regression — Model Comparison</h3>
-        <div class="ctx">Data Analysis 1 · CEU · CPS / MORG data</div>
+        <div class="ctx">Winter 2025 · Data Analysis 1 · CEU · CPS / MORG data</div>
         <p class="desc">Progressively complex regressions predicting hourly earnings, compared on RMSE, cross-validated RMSE, and BIC to study the bias–variance trade-off in a transparent, fully reproducible workflow.</p>
         <div class="result">Nested specifications compared on RMSE · CV-RMSE · BIC</div>
         <div class="links">
@@ -373,7 +374,7 @@
           <span class="tag">Machine Learning</span><span class="tag">SHAP</span><span class="tag">R</span>
         </div>
         <h3>Airbnb Price Prediction — Amsterdam</h3>
-        <div class="ctx">Data Analysis 2 · CEU · regularised regression + trees</div>
+        <div class="ctx">Winter 2025 · Data Analysis 2 · CEU · Amsterdam listings</div>
         <p class="desc">End-to-end pricing model benchmarking OLS, LASSO, Ridge, Random Forest, and XGBoost by hold-out RMSE and cross-validation, with SHAP to explain the gradient-boosted model both globally and at the listing level.</p>
         <div class="result">5-model RMSE benchmark · SHAP global + local explanations</div>
         <div class="links">
@@ -387,7 +388,7 @@
           <span class="tag">dbt</span><span class="tag">Snowflake</span><span class="tag">Analytics Engineering</span>
         </div>
         <h3>AirStats — dbt on Snowflake</h3>
-        <div class="ctx">Data Engineering 2 · CEU · global airport data</div>
+        <div class="ctx">Winter 2026 · Data Engineering 2 · CEU · global airport data</div>
         <p class="desc">A dbt project on Snowflake with a layered bronze/silver/gold architecture, SCD2 snapshots for slowly-changing airport and runway records, and data-quality tests (latitude range, non-negative runway dimensions, no future timestamps). Sources, schema, and model documentation defined in YAML for a reproducible, tested transformation layer.</p>
         <div class="result">3-layer dbt project · SCD2 snapshots · documented + tested models</div>
         <div class="links">
@@ -401,7 +402,7 @@
           <span class="tag">AWS</span><span class="tag">NLP</span><span class="tag">Serverless</span>
         </div>
         <h3>Cross-Lingual Sentiment Pipeline</h3>
-        <div class="ctx">Data Engineering 1 · CEU · Bangladesh political media · team of 2</div>
+        <div class="ctx">Fall 2025 · Data Engineering 1 · CEU · Bangladesh political media · team of 2</div>
         <p class="desc">Serverless AWS pipeline scraping news in Bangla and English, translating with AWS Translate and scoring sentiment with Comprehend, to compare how outlets cover the same political entity across languages and editorial stance. Processed records stored as structured data in S3.</p>
         <div class="result">AWS Translate + Comprehend + S3 · EN / BN · cross-language sentiment comparison</div>
         <div class="links">
@@ -415,7 +416,7 @@
           <span class="tag">SQL</span><span class="tag">DuckDB</span><span class="tag">Medallion Pipeline</span>
         </div>
         <h3>Data Integration with DuckDB</h3>
-        <div class="ctx">Intro to Data Science · CEU · ECBS5294</div>
+        <div class="ctx">Fall 2025 · Intro to Data Science · CEU · ECBS5294</div>
         <p class="desc">A three-stage progression in working with messy data: analytical SQL in DuckDB (joins, aggregations, window functions); flattening nested NoSQL JSON into normalised relational tables with primary- and foreign-key integrity checks; and a bronze/silver/gold pipeline integrating Chicago business-license CSV with NYC building-permit JSON, ending in six analytics KPIs and a documented data dictionary.</p>
         <div class="result">DuckDB · JSON normalisation · bronze / silver / gold · 6 analytics KPIs</div>
       </article>
@@ -426,7 +427,7 @@
           <span class="tag">Data Engineering</span><span class="tag">R</span><span class="tag">Trade Data</span>
         </div>
         <h3>Creative-Goods Trade Pipeline</h3>
-        <div class="ctx">Data Science field course · WU Vienna · UNCTAD &amp; IMF, 2000–2024</div>
+        <div class="ctx">Summer 2026 · field course · WU Vienna · UNCTAD &amp; IMF, 2000–2024</div>
         <p class="desc">Extended a modular R pipeline (setting → load → process → visualise, one entry point) with a new UNCTAD creative-goods indicator for the global games and software trade. Added API and CSV ingestion, LOCF/NOCB imputation, and three visualisations: an export time-series, a patchwork panel linking inward FDI stock to creative-goods output, and a circlize chord diagram of bilateral export flows across nine economies.</p>
         <div class="result">UNCTAD / IMF APIs · reproducible R pipeline · 9-economy chord diagram</div>
       </article>
@@ -437,7 +438,7 @@
           <span class="tag">Databricks</span><span class="tag">PySpark</span><span class="tag">Delta Lake</span>
         </div>
         <h3>Spark Analysis of Global Temperatures</h3>
-        <div class="ctx">Data Engineering 2 · CEU · GlobalTemperatures, 1750–2014</div>
+        <div class="ctx">Winter 2026 · Data Engineering 2 · CEU · GlobalTemperatures, 1750–2014</div>
         <p class="desc">End-to-end Spark workflow on Databricks over 260 years of temperature data: ingestion with inferred vs manual schemas, Spark SQL and DataFrame transformations, multi-function aggregations, window functions, and null handling. Wrote results to Delta Lake, inspected the transaction log, and registered the table in the catalog.</p>
         <div class="result">Spark SQL / DataFrames · Delta Lake · window functions · catalog</div>
       </article>
@@ -452,7 +453,7 @@
           <span class="tag">Policy</span><span class="tag">Financial Stability</span><span class="tag">Banking</span>
         </div>
         <h3>Addressing the Challenges of Shadow Banking</h3>
-        <div class="ctx">Policy brief · addressed to Bangladesh interim-government advisors</div>
+        <div class="ctx">Fall 2024 · policy brief · CEU · Bangladesh interim-government advisors</div>
         <p class="desc">A decision-maker-facing brief on the financial-stability risks of shadow banking (MFIs, mobile financial services, agent banking) in Bangladesh: root-cause analysis, evaluation of regulatory options, and a concrete recommendation balancing financial inclusion against systemic risk.</p>
         <div class="result">Root-cause analysis · regulatory options · costed recommendation</div>
         <div class="links">
@@ -466,7 +467,7 @@
           <span class="tag">Survey Design</span><span class="tag">Primary Data</span><span class="tag">Stata</span>
         </div>
         <h3>Online Women Entrepreneurs during COVID-19</h3>
-        <div class="ctx">Undergraduate research · Asian University for Women · Chittagong, 2021</div>
+        <div class="ctx">2021 · undergraduate research · Asian University for Women · Chittagong</div>
         <p class="desc">Designed and fielded a survey of 50 women running online businesses in Chittagong, then coded and analysed the responses in Stata: frequency and contingency tables, Cramér's V, Pearson's and Spearman's correlations, and an OLS model of the continuity decision with F-test and White test. End-to-end primary-data work from instrument design to interpretation.</p>
         <div class="result">Primary data collection · n = 50 · Stata · Cramér's V / Spearman / OLS</div>
       </article>
@@ -477,7 +478,7 @@
           <span class="tag">Geospatial</span><span class="tag">R</span><span class="tag">ACLED</span>
         </div>
         <h3>Mapping Conflict in R</h3>
-        <div class="ctx">INTR5083 · CEU · ACLED Africa, May 2025</div>
+        <div class="ctx">May 2025 · INTR5083 · CEU · ACLED Africa</div>
         <p class="desc">Spatial analysis and choropleth/point mapping of conflict events using ACLED data and shapefiles in R, turning event-level political-violence data into readable geographic narratives.</p>
         <div class="result">sf · shapefiles · event-level conflict mapping</div>
         <div class="links">
@@ -491,7 +492,7 @@
           <span class="tag">Climate Policy</span><span class="tag">Cost-Benefit</span><span class="tag">Review Paper</span><span class="tag">Environmental Science</span>
         </div>
         <h3>Shrimp Cultivation: Adaptation or Maladaptation?</h3>
-        <div class="ctx">Global Climate Change · Asian University for Women</div>
+        <div class="ctx">Fall 2021 · Global Climate Change · Asian University for Women</div>
         <p class="desc">A review of whether export shrimp farming in coastal Bangladesh helps the country adapt to climate change or makes it worse. Used a stakeholder cost-benefit lens (rich farmers, poor farmers, government, foreign buyers) to argue the gains are short-run and unevenly shared, with salt intrusion, mangrove loss, and rising inequality as the long-run costs. Early root of my climate-finance interest.</p>
         <div class="result">Stakeholder cost-benefit · maladaptation framing · climate &amp; coastal economy</div>
       </article>
@@ -560,7 +561,7 @@
       <ul class="exp-bullets">
         <li>Core member of a student club supporting women pursuing careers in business, finance, and data.</li>
         <li>Helped shape the club's early direction, events, and member community.</li>
-        <li>Organized women leadership conferences with 10 international women panelists.</li>
+        <li>Organized a conference on [TOPIC] with keynote speakers and panel sessions, featuring 10 international women panelists and drawing [N] attendees.</li>
       </ul>
     </div>
 
