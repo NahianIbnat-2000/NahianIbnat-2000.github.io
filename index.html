@@ -136,6 +136,10 @@
     .pgrid{grid-template-columns:1fr 1fr}
     .card.span2{grid-column:1 / -1}
   }
+  .pgroup-label{grid-column:1 / -1;font-family:var(--mono);font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--signal);margin:34px 0 2px;padding-top:18px;border-top:1px solid var(--line)}
+  .pgroup-label:first-of-type{margin-top:10px;padding-top:0;border-top:0}
+  .pgroup-sub{grid-column:1 / -1;font-size:13.5px;color:var(--fog-2);margin:0 0 8px}
 
   /* ---------- education / skills ---------- */
   .edu-item{padding:20px 0;border-top:1px solid var(--line)}
@@ -145,6 +149,9 @@
   .edu-top .when{font-family:var(--mono);font-size:12px;color:var(--fog-2)}
   .edu-item .role{display:block;font-size:14.5px;color:var(--fog);margin-top:3px}
   .edu-item .note{font-size:13.5px;color:var(--fog-2);margin-top:7px}
+  .edu-item .note .nl{display:block;margin-top:6px}
+  .edu-item .note .nl:first-child{margin-top:0}
+  .edu-item .note .nl b{color:var(--fog);font-weight:500}
   .exp-bullets{margin:9px 0 0;padding-left:18px;list-style:none}
   .exp-bullets li{position:relative;font-size:13.5px;color:var(--fog-2);margin-top:6px;line-height:1.5}
   .exp-bullets li::before{content:'';position:absolute;left:-14px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--signal)}
@@ -186,7 +193,7 @@
 
 <nav>
   <div class="wrap">
-    <span class="brand">nahian_ibnat<span class="dot">.</span></span>
+    <span class="brand"></span>
     <button class="navtoggle" aria-label="Menu" onclick="document.getElementById('nl').classList.toggle('open')">≡</button>
     <div class="navlinks" id="nl">
       <a href="#about">About</a>
@@ -206,7 +213,7 @@
       <span class="eyebrow">Economist · Data Scientist · Vienna / Budapest</span>
       <h1>Nahian Ibnat</h1>
       <div class="lede-box">
-        <p class="lede">MA in Economics, Data &amp; Policy from Central European University, working at the intersection of causal inference, machine learning, and quantitative finance. I build rigorous, reproducible analysis and deliver it as working, deployable tools rather than static reports.</p>
+        <p class="lede">I just graduated with an MA in Economics, Data &amp; Policy from Central European University, focused on the Data Science and Finance tracks. I build rigorous models using causal inference and sentiment analysis, and deliver them as working, deployable tools.</p>
       </div>
 
       <div class="meta-row">
@@ -225,8 +232,8 @@
   <div class="wrap">
     <div class="sec-label">01 — About</div>
     <h2>What I do</h2>
-    <p>I recently completed an MA in Economics, Data &amp; Policy at Central European University, on the Data and Finance tracks with an Advanced Certificate in International Political Economy. My academic work spans causal inference, econometrics, machine learning, time-series forecasting, and data engineering, and my thesis built a from-scratch twin-bond difference-in-differences design to test whether climate-news sentiment moves the greenium on sovereign green bonds, paired with a deployed interactive companion (a policy game, a live simulator, and a research-assistant chatbot).</p>
-    <p>Before CEU I earned a BA in Economics, summa cum laude (CGPA 3.95 / 4.0), and spent two years as a teaching assistant across econometrics, microeconomics, and banking and finance, alongside a stint in bank operations. I am drawn to analyst, analytics, and data roles in finance, central banking, and research, where quantitative rigor, clear communication, and an instinct for what the numbers actually mean all matter.</p>
+    <p>I just finished an MA in Economics, Data &amp; Policy at Central European University, on the Data and Finance tracks with an Advanced Certificate in International Political Economy. My work covers causal inference, econometrics, machine learning, forecasting, and data engineering. For my thesis, I built a twin-bond difference-in-differences design from scratch to test whether climate news moves the price gap on sovereign green bonds, and paired it with a live companion: a policy game, a simulator, and a research-assistant chatbot.</p>
+    <p>I am drawn to analyst, analytics, and data roles in finance, central banking, and research, where quantitative rigor, clear communication, and an instinct for what the numbers actually mean all matter. I am also interested in building simulation tools that use AI agents, turning models into interactive systems people can explore.</p>
   </div>
 </section>
 
@@ -241,7 +248,7 @@
         <span class="when">2024 – 2026 · Vienna / Budapest</span>
       </div>
       <span class="role">MA in Economics, Data &amp; Policy</span>
-      <span class="note">Data &amp; Finance tracks · Advanced Certificate in International Political Economy. Thesis on the sovereign green bond greenium in emerging markets (causal design, reproducible pipeline, deployed interactive companion). Coursework: Fixed Income Analysis · Deep Learning · Banking &amp; Financial Institutions · Prediction &amp; Machine Learning · Causal Inference · Data Engineering 1–2.</span>
+      <span class="note"><span class="nl">Data &amp; Finance tracks · Advanced Certificate in International Political Economy.</span><span class="nl">Thesis on the sovereign green bond greenium in emerging markets (causal design, reproducible pipeline, deployed interactive companion).</span><span class="nl"><b>Coursework:</b> Fixed Income Analysis · Deep Learning · Banking &amp; Financial Institutions · Prediction &amp; Machine Learning · Causal Inference · Data Engineering 1–2.</span></span>
     </div>
 
     <div class="edu-item">
@@ -250,7 +257,7 @@
         <span class="when">2018 – 2022 · Chattogram, Bangladesh</span>
       </div>
       <span class="role">BA in Economics — summa cum laude</span>
-      <span class="note">CGPA 3.95 / 4.00 · Major in Economics; double minor in Environmental Science and Mathematics. Coursework: Game Theory · Econometrics · Intermediate Micro &amp; Macroeconomics · Development &amp; Economic Growth · Banking and Finance · Public Finance · Labor Economics · Economics of International Trade · Calculus I–II · Linear Algebra · Differential Equations · Discrete Mathematics · Numerical Analysis · Probability &amp; Statistics.</span>
+      <span class="note"><span class="nl">CGPA 3.95 / 4.00 · Major in Economics; double minor in Environmental Science and Mathematics.</span><span class="nl"><b>Coursework:</b> Game Theory · Econometrics · Intermediate Micro &amp; Macroeconomics · Development &amp; Economic Growth · Banking and Finance · Public Finance · Labor Economics · Economics of International Trade · Calculus I–II · Linear Algebra · Differential Equations · Discrete Mathematics · Numerical Analysis · Probability &amp; Statistics.</span></span>
     </div>
   </div>
 </section>
@@ -280,61 +287,9 @@
         </div>
       </article>
 
-      <!-- dbt / Snowflake -->
-      <article class="card">
-        <div class="tags">
-          <span class="tag">dbt</span><span class="tag">Snowflake</span><span class="tag">Analytics Engineering</span>
-        </div>
-        <h3>AirStats — dbt on Snowflake</h3>
-        <div class="ctx">Data Engineering 2 · CEU · global airport data</div>
-        <p class="desc">A dbt project on Snowflake with a layered bronze/silver architecture, SCD2 snapshots for slowly-changing airport and runway records, and data-quality tests (latitude range, non-negative runway dimensions, no future timestamps). Sources, schema, and model documentation defined in YAML for a reproducible, tested transformation layer.</p>
-        <div class="result">3-layer dbt project · SCD2 snapshots · documented + tested models</div>
-        <div class="links">
-          <a class="btn" href="https://github.com/NahianIbnat-2000/DE2_week2" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </article>
-
-      <!-- AWS pipeline -->
-      <article class="card">
-        <div class="tags">
-          <span class="tag">AWS</span><span class="tag">NLP</span><span class="tag">Serverless</span>
-        </div>
-        <h3>Cross-Lingual Sentiment Pipeline</h3>
-        <div class="ctx">Data Engineering 1 · CEU · Bangladesh political media</div>
-        <p class="desc">Serverless AWS pipeline scraping news in Bangla and English, translating with AWS Translate and scoring sentiment with Comprehend, to compare how outlets cover the same political entity across languages and editorial stance. Processed records stored as structured data in S3.</p>
-        <div class="result">AWS Translate + Comprehend + S3 · EN / BN · cross-language sentiment comparison</div>
-        <div class="links">
-          <a class="btn" href="https://github.com/NahianIbnat-2000/AWS-Sentiment-Pipeline" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </article>
-
-      <!-- Fast growth -->
-      <article class="card">
-        <div class="tags">
-          <span class="tag">Machine Learning</span><span class="tag">Finance</span><span class="tag">Cost-sensitive</span>
-        </div>
-        <h3>Predicting Fast-Growing Firms</h3>
-        <div class="ctx">Data Analysis 3 · CEU · administrative panel 2010–2015</div>
-        <p class="desc">Logit, CART, and Random Forest to flag high-growth firms by log sales growth, with probability-threshold tuning and a cost-sensitive loss function to minimise expected business loss. Results validated separately across manufacturing and services.</p>
-        <div class="result">RF / CART / Logit · expected-loss threshold tuning · sector-split validation</div>
-        <div class="links">
-          <a class="btn" href="https://github.com/NahianIbnat-2000/Fast-growing-firms-Prediction" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </article>
-
-      <!-- Airbnb -->
-      <article class="card">
-        <div class="tags">
-          <span class="tag">Machine Learning</span><span class="tag">SHAP</span><span class="tag">R</span>
-        </div>
-        <h3>Airbnb Price Prediction — Amsterdam</h3>
-        <div class="ctx">Data Analysis 2 · CEU · regularised regression + trees</div>
-        <p class="desc">End-to-end pricing model benchmarking OLS, LASSO, Ridge, Random Forest, and XGBoost by hold-out RMSE and cross-validation, with SHAP to explain the gradient-boosted model both globally and at the listing level.</p>
-        <div class="result">5-model RMSE benchmark · SHAP global + local explanations</div>
-        <div class="links">
-          <a class="btn" href="https://github.com/NahianIbnat-2000/Airbnb-price-Prediction" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </article>
+      <!-- ===== GROUP 1: FINANCE & CAUSAL INFERENCE ===== -->
+      <div class="pgroup-label">Finance &amp; Causal Inference</div>
+      <p class="pgroup-sub">Asset pricing, factor models, macro forecasting, and applied econometrics.</p>
 
       <!-- Mean-variance / factor models -->
       <article class="card">
@@ -361,15 +316,18 @@
         <div class="result">ARIMA vs VAR vs BVAR · recursive OOS · ESI explains ≈50% of QoQ GDP growth</div>
       </article>
 
-      <!-- DuckDB data integration (merged HW1-3) -->
+      <!-- Fast growth -->
       <article class="card">
         <div class="tags">
-          <span class="tag">SQL</span><span class="tag">DuckDB</span><span class="tag">Medallion Pipeline</span>
+          <span class="tag">Machine Learning</span><span class="tag">Finance</span><span class="tag">Cost-sensitive</span>
         </div>
-        <h3>Data Integration with DuckDB</h3>
-        <div class="ctx">Intro to Data Science · CEU · ECBS5294</div>
-        <p class="desc">A three-stage progression in working with messy data: analytical SQL in DuckDB (joins, aggregations, window functions); flattening nested NoSQL JSON into normalised relational tables with primary- and foreign-key integrity checks; and a bronze/silver/gold pipeline integrating Chicago business-license CSV with NYC building-permit JSON, ending in six analytics KPIs and a documented data dictionary.</p>
-        <div class="result">DuckDB · JSON normalisation · bronze / silver / gold · 6 analytics KPIs</div>
+        <h3>Predicting Fast-Growing Firms</h3>
+        <div class="ctx">Data Analysis 3 · CEU · administrative panel 2010–2015</div>
+        <p class="desc">Logit, CART, and Random Forest to flag high-growth firms by log sales growth, with probability-threshold tuning and a cost-sensitive loss function to minimise expected business loss. Results validated separately across manufacturing and services.</p>
+        <div class="result">RF / CART / Logit · expected-loss threshold tuning · sector-split validation</div>
+        <div class="links">
+          <a class="btn" href="https://github.com/NahianIbnat-2000/Fast-growing-firms-Prediction" target="_blank" rel="noopener">GitHub</a>
+        </div>
       </article>
 
       <!-- Earnings regression -->
@@ -384,6 +342,63 @@
         <div class="links">
           <a class="btn" href="https://github.com/NahianIbnat-2000/Earnings-Regression" target="_blank" rel="noopener">GitHub</a>
         </div>
+      </article>
+
+      <!-- ===== GROUP 2: DATA SCIENCE & ENGINEERING ===== -->
+      <div class="pgroup-label">Data Science &amp; Engineering</div>
+      <p class="pgroup-sub">Machine learning, pipelines, and large-scale data processing.</p>
+
+      <!-- Airbnb -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">Machine Learning</span><span class="tag">SHAP</span><span class="tag">R</span>
+        </div>
+        <h3>Airbnb Price Prediction — Amsterdam</h3>
+        <div class="ctx">Data Analysis 2 · CEU · regularised regression + trees</div>
+        <p class="desc">End-to-end pricing model benchmarking OLS, LASSO, Ridge, Random Forest, and XGBoost by hold-out RMSE and cross-validation, with SHAP to explain the gradient-boosted model both globally and at the listing level.</p>
+        <div class="result">5-model RMSE benchmark · SHAP global + local explanations</div>
+        <div class="links">
+          <a class="btn" href="https://github.com/NahianIbnat-2000/Airbnb-price-Prediction" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <!-- dbt / Snowflake -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">dbt</span><span class="tag">Snowflake</span><span class="tag">Analytics Engineering</span>
+        </div>
+        <h3>AirStats — dbt on Snowflake</h3>
+        <div class="ctx">Data Engineering 2 · CEU · global airport data</div>
+        <p class="desc">A dbt project on Snowflake with a layered bronze/silver/gold architecture, SCD2 snapshots for slowly-changing airport and runway records, and data-quality tests (latitude range, non-negative runway dimensions, no future timestamps). Sources, schema, and model documentation defined in YAML for a reproducible, tested transformation layer.</p>
+        <div class="result">3-layer dbt project · SCD2 snapshots · documented + tested models</div>
+        <div class="links">
+          <a class="btn" href="https://github.com/NahianIbnat-2000/DE2_week2" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <!-- AWS pipeline -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">AWS</span><span class="tag">NLP</span><span class="tag">Serverless</span>
+        </div>
+        <h3>Cross-Lingual Sentiment Pipeline</h3>
+        <div class="ctx">Data Engineering 1 · CEU · Bangladesh political media · team of 2</div>
+        <p class="desc">Serverless AWS pipeline scraping news in Bangla and English, translating with AWS Translate and scoring sentiment with Comprehend, to compare how outlets cover the same political entity across languages and editorial stance. Processed records stored as structured data in S3.</p>
+        <div class="result">AWS Translate + Comprehend + S3 · EN / BN · cross-language sentiment comparison</div>
+        <div class="links">
+          <a class="btn" href="https://github.com/NahianIbnat-2000/AWS-Sentiment-Pipeline" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <!-- DuckDB data integration (merged HW1-3) -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">SQL</span><span class="tag">DuckDB</span><span class="tag">Medallion Pipeline</span>
+        </div>
+        <h3>Data Integration with DuckDB</h3>
+        <div class="ctx">Intro to Data Science · CEU · ECBS5294</div>
+        <p class="desc">A three-stage progression in working with messy data: analytical SQL in DuckDB (joins, aggregations, window functions); flattening nested NoSQL JSON into normalised relational tables with primary- and foreign-key integrity checks; and a bronze/silver/gold pipeline integrating Chicago business-license CSV with NYC building-permit JSON, ending in six analytics KPIs and a documented data dictionary.</p>
+        <div class="result">DuckDB · JSON normalisation · bronze / silver / gold · 6 analytics KPIs</div>
       </article>
 
       <!-- Creative goods R pipeline -->
@@ -407,6 +422,10 @@
         <p class="desc">End-to-end Spark workflow on Databricks over 260 years of temperature data: ingestion with inferred vs manual schemas, Spark SQL and DataFrame transformations, multi-function aggregations, window functions, and null handling. Wrote results to Delta Lake, inspected the transaction log, and registered the table in the catalog.</p>
         <div class="result">Spark SQL / DataFrames · Delta Lake · window functions · catalog</div>
       </article>
+
+      <!-- ===== GROUP 3: POLICY & RESEARCH ===== -->
+      <div class="pgroup-label">Policy &amp; Research</div>
+      <p class="pgroup-sub">Financial-stability policy, primary-data research, and geospatial analysis.</p>
 
       <!-- Policy brief -->
       <article class="card">
@@ -511,6 +530,7 @@
       <ul class="exp-bullets">
         <li>Co-founded a student club supporting women pursuing careers in business, finance, and data.</li>
         <li>Helped shape the club's early direction, events, and member community.</li>
+        <li>Organized events featuring speakers from around the world.</li>
       </ul>
     </div>
 
@@ -523,6 +543,18 @@
       <ul class="exp-bullets">
         <li>Elected to represent the cohort for two consecutive years.</li>
         <li>Channelled student feedback to faculty and helped coordinate between students and the programme.</li>
+      </ul>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-top">
+        <span class="org">AUW Science &amp; Math Center</span>
+        <span class="when">Jan – May 2022 · Chattogram</span>
+      </div>
+      <span class="role">Peer Tutor</span>
+      <ul class="exp-bullets">
+        <li>Organized workshops and lectures for students in the Science &amp; Math Center.</li>
+        <li>Supported peers in Advanced Economics and proofread academic papers.</li>
       </ul>
     </div>
   </div>
@@ -588,7 +620,7 @@
     <h2>Get in touch</h2>
     <p>Open to graduate analyst and data roles in finance, central banking, research, and policy. Based in Vienna / Budapest.</p>
     <div class="cta-row">
-      <a class="cta primary" href="mailto:nahianibnat@example.com">Email me</a>
+      <a class="cta primary" href="mailto:nahian.anan83@gmail.com">Email me</a>
       <a class="cta ghost" href="https://www.linkedin.com/in/nahian-ibnat-514a8a347/" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a class="cta ghost" href="https://github.com/NahianIbnat-2000" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
