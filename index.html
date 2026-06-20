@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nahian Ibnat — Economist · Data Scientist</title>
+<meta name="description" content="Nahian Ibnat — MA in Economics, Data & Policy (CEU). Causal inference, machine learning, and quantitative finance. Vienna / Budapest." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* light theme — roles kept, values inverted to a paper field */
+    --ink:#f7f5f0;          /* warm paper field (was deep navy) */
+    --ink-2:#fffdf9;        /* raised panel */
+    --ink-3:#ffffff;        /* card */
+    --line:#e2ddd2;         /* hairline borders */
+    --fog:#43525f;          /* muted body text */
+    --fog-2:#7d8794;        /* captions */
+    --paper:#15212c;        /* primary heading ink (was white) */
+    --signal:#0f8a52;       /* deeper green so it reads as clickable on white */
+    --signal-dim:rgba(15,138,82,.10);
+    --amber:#b07a18;        /* secondary, used sparingly for "null" */
+    --maxw:1080px;
+    --display:'Space Grotesk',sans-serif;
+    --body:'Inter',sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--ink);color:var(--fog);
+    font-family:var(--body);font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  ::selection{background:var(--signal-dim);color:var(--paper)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,245,240,.85);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--paper)}
+  .brand .dot{color:var(--signal)}
+  .navlinks{display:flex;gap:26px}
+  .navlinks a{font-size:13.5px;color:var(--fog);text-decoration:none;transition:color .15s}
+  .navlinks a:hover{color:var(--paper)}
+  .navtoggle{display:none;background:none;border:0;color:var(--paper);font-size:22px;cursor:pointer}
+
+  /* ---------- hero ---------- */
+  header.hero{padding:96px 0 72px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
+  @media(min-width:820px){
+    .hero-grid{grid-template-columns:1.35fr 1fr;gap:56px}
+  }
+  .hero-portrait{order:-1}
+  @media(min-width:820px){.hero-portrait{order:0}}
+  .hero-portrait img{
+    display:block;width:100%;max-width:300px;max-height:340px;margin:0 auto;
+    aspect-ratio:4/5;object-fit:cover;border-radius:14px;
+    border:1px solid var(--line);
+    box-shadow:0 18px 40px -22px rgba(21,33,44,.45);
+  }
+  @media(min-width:820px){.hero-portrait img{max-width:300px;max-height:380px;margin-left:auto;margin-right:0}}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--fog-2)}
+  h1{
+    font-family:var(--display);font-weight:600;color:var(--paper);
+    font-size:clamp(40px,7vw,72px);line-height:1.02;letter-spacing:-.02em;
+    margin:18px 0 0;
+  }
+  .lede{max-width:620px;margin:0;font-size:clamp(16px,2.2vw,18.5px);color:var(--fog)}
+  .lede-box{
+    max-width:640px;margin:24px 0 0;padding:20px 22px;
+    background:var(--ink-2);border:1px solid var(--line);
+    border-left:3px solid var(--signal);border-radius:10px;
+  }
+  .lede strong{color:var(--paper);font-weight:500}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:28px;font-family:var(--mono);font-size:12.5px;color:var(--fog-2)}
+  .meta-row a{color:var(--fog);text-decoration:none;border-bottom:1px solid transparent;transition:.15s}
+  .meta-row a:hover{color:var(--paper);border-color:var(--signal)}
+
+  /* signature: greenium ticker */
+  .ticker{
+    margin-top:42px;border:1px solid var(--line);border-radius:10px;
+    background:linear-gradient(180deg,var(--ink-2),var(--ink));overflow:hidden;
+  }
+  .ticker-head{display:flex;justify-content:space-between;align-items:center;
+    padding:12px 16px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11.5px;color:var(--fog-2)}
+  .ticker-head .live{display:inline-flex;align-items:center;gap:7px;color:var(--signal)}
+  .pulse{width:7px;height:7px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 0 var(--signal);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(15,138,82,.5)}70%{box-shadow:0 0 0 8px rgba(15,138,82,0)}100%{box-shadow:0 0 0 0 rgba(15,138,82,0)}}
+  svg.spark{display:block;width:100%;height:120px}
+  .ticker-foot{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+  .stat{padding:14px 16px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat .v{font-family:var(--display);font-size:21px;color:var(--paper);font-weight:600;letter-spacing:-.01em}
+  .stat .v.green{color:var(--signal)}
+  .stat .v.amber{color:var(--amber)}
+  .stat .k{font-family:var(--mono);font-size:10.5px;color:var(--fog-2);text-transform:uppercase;letter-spacing:.1em;margin-top:3px}
+
+  /* ---------- section frame ---------- */
+  section{padding:74px 0;border-bottom:1px solid var(--line)}
+  .sec-label{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--signal);margin-bottom:8px}
+  h2{font-family:var(--display);font-weight:600;color:var(--paper);font-size:clamp(26px,4vw,34px);letter-spacing:-.015em;margin:0 0 26px}
+  .about p{max-width:680px;font-size:17px}
+  .about p+p{margin-top:16px}
+
+  /* ---------- projects ---------- */
+  .pgrid{display:grid;grid-template-columns:1fr;gap:18px}
+  .card{
+    border:1px solid var(--line);border-radius:12px;background:var(--ink-3);
+    padding:24px 24px 22px;transition:border-color .2s,transform .2s;position:relative;
+  }
+  .card:hover{border-color:#c9c2b4;transform:translateY(-2px)}
+  .card.hero-card{background:linear-gradient(135deg,var(--ink-3),var(--ink-2));border-color:#d8e6dc}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px}
+  .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;padding:4px 9px;border-radius:5px;
+    background:var(--ink);border:1px solid var(--line);color:var(--fog)}
+  .tag.live{color:var(--signal);border-color:rgba(15,138,82,.35);background:var(--signal-dim)}
+  .card h3{font-family:var(--display);font-weight:600;color:var(--paper);font-size:20.5px;margin:0 0 4px;letter-spacing:-.01em}
+  .card .ctx{font-family:var(--mono);font-size:11.5px;color:var(--fog-2);margin-bottom:11px}
+  .card p.desc{font-size:14.7px;color:var(--fog);margin:0}
+  .card .result{margin-top:13px;font-family:var(--mono);font-size:11.5px;color:var(--fog-2)}
+  .card .result b{color:var(--paper);font-weight:500}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .btn{font-family:var(--mono);font-size:12px;text-decoration:none;padding:8px 13px;border-radius:7px;
+    border:1px solid var(--line);color:var(--fog);transition:.15s;display:inline-flex;align-items:center;gap:7px}
+  .btn:hover{color:var(--paper);border-color:#c9c2b4}
+  .btn.go{color:var(--signal);border-color:rgba(15,138,82,.4);background:var(--signal-dim)}
+  .btn.go:hover{background:rgba(15,138,82,.12)}
+  @media(min-width:760px){
+    .pgrid{grid-template-columns:1fr 1fr}
+    .card.span2{grid-column:1 / -1}
+  }
+
+  /* ---------- education / skills ---------- */
+  .edu-item{padding:20px 0;border-top:1px solid var(--line)}
+  .edu-item:first-child{border-top:0}
+  .edu-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px}
+  .edu-top .org{font-family:var(--display);color:var(--paper);font-weight:600;font-size:18px;letter-spacing:-.01em}
+  .edu-top .when{font-family:var(--mono);font-size:12px;color:var(--fog-2)}
+  .edu-item .role{display:block;font-size:14.5px;color:var(--fog);margin-top:3px}
+  .edu-item .note{font-size:13.5px;color:var(--fog-2);margin-top:7px}
+  .exp-bullets{margin:9px 0 0;padding-left:18px;list-style:none}
+  .exp-bullets li{position:relative;font-size:13.5px;color:var(--fog-2);margin-top:6px;line-height:1.5}
+  .exp-bullets li::before{content:'';position:absolute;left:-14px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--signal)}
+  .skills{display:grid;grid-template-columns:1fr;gap:22px}
+  @media(min-width:680px){.skills{grid-template-columns:1fr 1fr}}
+  .skillset h4{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fog-2);margin:0 0 11px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{font-size:13px;padding:5px 11px;border-radius:6px;background:var(--ink-3);border:1px solid var(--line);color:var(--fog)}
+
+  /* ---------- contact / footer ---------- */
+  .contact p{max-width:560px;font-size:16.5px}
+  .contact .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+  .cta{font-family:var(--mono);font-size:13px;text-decoration:none;padding:12px 18px;border-radius:8px;transition:.15s}
+  .cta.primary{background:var(--signal);color:#ffffff;font-weight:500}
+  .cta.primary:hover{filter:brightness(.94)}
+  .cta.ghost{border:1px solid var(--line);color:var(--fog)}
+  .cta.ghost:hover{color:var(--paper);border-color:#c9c2b4}
+  footer{padding:30px 0;color:var(--fog-2);font-family:var(--mono);font-size:12px}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+  @media(max-width:680px){
+    .navlinks{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;
+      background:var(--ink-2);border-bottom:1px solid var(--line)}
+    .navlinks.open{display:flex}
+    .navlinks a{padding:14px 24px;border-top:1px solid var(--line)}
+    .navtoggle{display:block}
+    .ticker-foot{grid-template-columns:1fr}
+    .stat{border-right:0;border-bottom:1px solid var(--line)}
+    .stat:last-child{border-bottom:0}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .pulse{animation:none}
+    .spark .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;animation:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">nahian_ibnat<span class="dot">.</span></span>
+    <button class="navtoggle" aria-label="Menu" onclick="document.getElementById('nl').classList.toggle('open')">≡</button>
+    <div class="navlinks" id="nl">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">Economist · Data Scientist · Vienna / Budapest</span>
+      <h1>Nahian Ibnat</h1>
+      <div class="lede-box">
+        <p class="lede">MA in Economics, Data &amp; Policy from <strong>Central European University</strong>, working at the intersection of <strong>causal inference</strong>, <strong>machine learning</strong>, and <strong>quantitative finance</strong>. I build rigorous, reproducible analysis and deliver it as working, deployable tools rather than static reports.</p>
+      </div>
+
+      <div class="meta-row">
+        <a href="mailto:nahian.anan83@gmail.com">nahian.anan83@gmail.com</a>
+        <a href="https://www.linkedin.com/in/nahian-ibnat-514a8a347/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/NahianIbnat-2000" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <img src="portrait.jpg" alt="Nahian Ibnat" loading="eager" width="900" height="1125" />
+    </div>
+  </div>
+</header>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="sec-label">01 — About</div>
+    <h2>What I do</h2>
+    <p>I hold an MA in Economics, Data &amp; Policy from CEU (Data and Finance tracks, with an Advanced Certificate in International Political Economy) and a BA in Economics, summa cum laude, from the Asian University for Women. My work spans applied econometrics, causal inference, predictive modelling, and the data engineering that makes all of it reproducible.</p>
+    <p>My thesis is the clearest statement of how I work: a from-scratch causal design on sovereign green bonds, an honest null result reported as a null result, and a full interactive companion (a policy game, a live simulator, and a retrieval-based research assistant) deployed so a non-specialist can click through the finding in a minute. I'm looking for analyst and data roles in finance, central banking, and research where economic reasoning meets modern tooling.</p>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-label">02 — Education</div>
+    <h2>Education</h2>
+
+    <div class="edu-item">
+      <div class="edu-top">
+        <span class="org">Central European University</span>
+        <span class="when">2024 – 2026 · Vienna / Budapest</span>
+      </div>
+      <span class="role">MA in Economics, Data &amp; Policy</span>
+      <span class="note">Data &amp; Finance tracks · Advanced Certificate in International Political Economy. Thesis on the sovereign green bond greenium in emerging markets (causal design, reproducible pipeline, deployed interactive companion). Coursework: Fixed Income Analysis · Deep Learning · Banking &amp; Financial Institutions · Prediction &amp; Machine Learning · Causal Inference · Data Engineering 1–2.</span>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-top">
+        <span class="org">Asian University for Women</span>
+        <span class="when">2018 – 2022 · Chattogram, Bangladesh</span>
+      </div>
+      <span class="role">BA in Economics — summa cum laude</span>
+      <span class="note">CGPA 3.95 / 4.00 · Major in Economics; double minor in Mathematics and Environmental Science.</span>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-label">03 — Projects</div>
+    <h2>Selected work</h2>
+    <div class="pgrid">
+
+      <!-- HERO PROJECT -->
+      <article class="card hero-card span2">
+        <div class="tags">
+          <span class="tag">Causal Inference</span>
+          <span class="tag">Stacked DiD</span>
+          <span class="tag">Fixed Income</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag live">● live demos</span>
+        </div>
+        <h3>When Governments Say "Green" — Do Bond Markets Believe Them?</h3>
+        <div class="ctx">MA Thesis · CEU · Sovereign green bond greenium in emerging markets</div>
+        <p class="desc">A twin-bond stacked difference-in-differences design (Baker et al. 2022) testing whether climate-news tone shifts the greenium on sovereign green bonds. GDELT V2Tone sentiment, five specifications (M1–M5) with HC3/PCSE errors, event studies, Granger causality, and European robustness checks. Built end to end: data, models, write-up, and a deployed product layer with a policy game, live simulator, and research-assistant chatbot.</p>
+        <div class="result"><b>Null across all three hypotheses</b> in the Asian sample · VIX the only robust daily driver (0.35–0.48 bp/SD) · European greeniums of <b>−1.82 bp</b> (Germany) and <b>−2.80 bp</b> (Denmark)</div>
+        <div class="links">
+          <a class="btn go" href="https://nahianibnat-2000.github.io/Thesis/" target="_blank" rel="noopener">▶ Explore the thesis site</a>
+          <a class="btn" href="https://github.com/NahianIbnat-2000/Thesis" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <!-- dbt / Snowflake -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">dbt</span><span class="tag">Snowflake</span><span class="tag">Analytics Engineering</span>
+        </div>
+        <h3>AirStats — dbt on Snowflake</h3>
+        <div class="ctx">Data Engineering 2 · CEU · global airport data</div>
+        <p class="desc">A dbt project on Snowflake with a layered bronze/silver architecture, SCD2 snapshots for slowly-changing airport and runway records, and data-quality tests (latitude range, non-negative runway dimensions, no future timestamps). Sources, schema, and model documentation defined in YAML for a reproducible, tested transformation layer.</p>
+        <div class="result">3-layer dbt project · SCD2 snapshots · documented + tested models</div>
+        <div class="links">
+          <a class="btn" href="https://github.com/NahianIbnat-2000/DE2_week2" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <!-- AWS pipeline -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">AWS</span><span class="tag">NLP</span><span class="tag">Serverless</span>
+        </div>
+        <h3>Cross-Lingual Sentiment Pipeline</h3>
+        <div class="ctx">Data Engineering 1 · CEU · Bangladesh political media</div>
+        <p class="desc">Serverless AWS pipeline scraping news in Bangla and English, translating with AWS Translate and scoring sentiment with Comprehend, to compare how outlets cover the same political entity across languages and editorial stance. Processed records stored as structured data in S3.</p>
+        <div class="result">AWS Translate + Comprehend + S3 · EN / BN · cross-language sentiment comparison</div>
+        <div class="links">
+          <a class="btn" href="https://github.com/NahianIbnat-2000/AWS-Sentiment-Pipeline" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <!-- Fast growth -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">Machine Learning</span><span class="tag">Finance</span><span class="tag">Cost-sensitive</span>
+        </div>
+        <h3>Predicting Fast-Growing Firms</h3>
+        <div class="ctx">Data Analysis 3 · CEU · administrative panel 2010–2015</div>
+        <p class="desc">Logit, CART, and Random Forest to flag high-growth firms by log sales growth, with probability-threshold tuning and a cost-sensitive loss function to minimise expected business loss. Results validated separately across manufacturing and services.</p>
+        <div class="result">RF / CART / Logit · expected-loss threshold tuning · sector-split validation</div>
+        <div class="links">
+          <a class="btn" href="https://github.com/NahianIbnat-2000/Fast-growing-firms-Prediction" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <!-- Airbnb -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">Machine Learning</span><span class="tag">SHAP</span><span class="tag">R</span>
+        </div>
+        <h3>Airbnb Price Prediction — Amsterdam</h3>
+        <div class="ctx">Data Analysis 2 · CEU · regularised regression + trees</div>
+        <p class="desc">End-to-end pricing model benchmarking OLS, LASSO, Ridge, Random Forest, and XGBoost by hold-out RMSE and cross-validation, with SHAP to explain the gradient-boosted model both globally and at the listing level.</p>
+        <div class="result">5-model RMSE benchmark · SHAP global + local explanations</div>
+        <div class="links">
+          <a class="btn" href="https://github.com/NahianIbnat-2000/Airbnb-price-Prediction" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <!-- Mean-variance / factor models -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">Finance</span><span class="tag">Portfolio Theory</span><span class="tag">Factor Models</span>
+        </div>
+        <h3>Mean-Variance Optimization &amp; Factor Models</h3>
+        <div class="ctx">Trading &amp; Portfolio Theory · CEU · SPY / BND / GLD, 1993–2025</div>
+        <p class="desc">Built excess-return series for SPY, BND, and GLD; derived the covariance matrix, Sharpe ratios, and the optimal risky portfolio via Solver. Estimated CAPM, Fama-French 3- and 6-factor, momentum, BAB, and liquidity loadings for individual assets (AAPL, VTV, AGTHX, Berkshire) to separate alpha from factor exposure.</p>
+        <div class="result">Mean-variance frontier · Sharpe · CAPM / FF3 / FF6 / MOM / BAB alpha decomposition</div>
+        <div class="links">
+          <a class="btn" href="https://github.com/NahianIbnat-2000/Trading-and-Portfolio" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <!-- Macro forecasting (merged EViews assignments) -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">Time Series</span><span class="tag">Macro</span><span class="tag">EViews</span>
+        </div>
+        <h3>Forecasting Austrian Macro</h3>
+        <div class="ctx">Theory &amp; Practice of Forecasting · CEU · 1985–2025, quarterly</div>
+        <p class="desc">Leading-indicator assessment (OECD/EC sentiment vs. GDP and consumption) plus a full ARIMA–VAR–BVAR horse-race for unemployment, inflation, GDP growth, and the 3-month rate. Recursive pseudo-out-of-sample evaluation on RMSE, Theil's U, and direction-of-change, testing the interest rate as endogenous vs. exogenous.</p>
+        <div class="result">ARIMA vs VAR vs BVAR · recursive OOS · ESI explains ≈50% of QoQ GDP growth</div>
+      </article>
+
+      <!-- DuckDB data integration (merged HW1-3) -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">SQL</span><span class="tag">DuckDB</span><span class="tag">Medallion Pipeline</span>
+        </div>
+        <h3>Data Integration with DuckDB</h3>
+        <div class="ctx">Intro to Data Science · CEU · ECBS5294</div>
+        <p class="desc">A three-stage progression in working with messy data: analytical SQL in DuckDB (joins, aggregations, window functions); flattening nested NoSQL JSON into normalised relational tables with primary- and foreign-key integrity checks; and a bronze/silver/gold pipeline integrating Chicago business-license CSV with NYC building-permit JSON, ending in six analytics KPIs and a documented data dictionary.</p>
+        <div class="result">DuckDB · JSON normalisation · bronze / silver / gold · 6 analytics KPIs</div>
+      </article>
+
+      <!-- Earnings regression -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">Econometrics</span><span class="tag">Model Selection</span><span class="tag">R</span>
+        </div>
+        <h3>Earnings Regression — Model Comparison</h3>
+        <div class="ctx">Data Analysis 1 · CEU · CPS / MORG data</div>
+        <p class="desc">Progressively complex regressions predicting hourly earnings, compared on RMSE, cross-validated RMSE, and BIC to study the bias–variance trade-off in a transparent, fully reproducible workflow.</p>
+        <div class="result">Nested specifications compared on RMSE · CV-RMSE · BIC</div>
+        <div class="links">
+          <a class="btn" href="https://github.com/NahianIbnat-2000/Earnings-Regression" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <!-- Creative goods R pipeline -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">Data Engineering</span><span class="tag">R</span><span class="tag">Trade Data</span>
+        </div>
+        <h3>Creative-Goods Trade Pipeline</h3>
+        <div class="ctx">Data Science field course · WU Vienna · UNCTAD &amp; IMF, 2000–2024</div>
+        <p class="desc">Extended a modular R pipeline (setting → load → process → visualise, one entry point) with a new UNCTAD creative-goods indicator for the global games and software trade. Added API and CSV ingestion, LOCF/NOCB imputation, and three visualisations: an export time-series, a patchwork panel linking inward FDI stock to creative-goods output, and a circlize chord diagram of bilateral export flows across nine economies.</p>
+        <div class="result">UNCTAD / IMF APIs · reproducible R pipeline · 9-economy chord diagram</div>
+      </article>
+
+      <!-- Databricks / Spark -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">Databricks</span><span class="tag">PySpark</span><span class="tag">Delta Lake</span>
+        </div>
+        <h3>Spark Analysis of Global Temperatures</h3>
+        <div class="ctx">Data Engineering 2 · CEU · GlobalTemperatures, 1750–2014</div>
+        <p class="desc">End-to-end Spark workflow on Databricks over 260 years of temperature data: ingestion with inferred vs manual schemas, Spark SQL and DataFrame transformations, multi-function aggregations, window functions, and null handling. Wrote results to Delta Lake, inspected the transaction log, and registered the table in the catalog.</p>
+        <div class="result">Spark SQL / DataFrames · Delta Lake · window functions · catalog</div>
+      </article>
+
+      <!-- Policy brief -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">Policy</span><span class="tag">Financial Stability</span><span class="tag">Banking</span>
+        </div>
+        <h3>Addressing the Challenges of Shadow Banking</h3>
+        <div class="ctx">Policy brief · addressed to Bangladesh interim-government advisors</div>
+        <p class="desc">A decision-maker-facing brief on the financial-stability risks of shadow banking (MFIs, mobile financial services, agent banking) in Bangladesh: root-cause analysis, evaluation of regulatory options, and a concrete recommendation balancing financial inclusion against systemic risk.</p>
+        <div class="result">Root-cause analysis · regulatory options · costed recommendation</div>
+        <div class="links">
+          <a class="btn" href="https://github.com/NahianIbnat-2000/Policy-Brief" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <!-- Undergrad survey research -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">Survey Design</span><span class="tag">Primary Data</span><span class="tag">Stata</span>
+        </div>
+        <h3>Online Women Entrepreneurs during COVID-19</h3>
+        <div class="ctx">Undergraduate research · Asian University for Women · Chittagong, 2021</div>
+        <p class="desc">Designed and fielded a survey of 50 women running online businesses in Chittagong, then coded and analysed the responses in Stata: frequency and contingency tables, Cramér's V, Pearson's and Spearman's correlations, and an OLS model of the continuity decision with F-test and White test. End-to-end primary-data work from instrument design to interpretation.</p>
+        <div class="result">Primary data collection · n = 50 · Stata · Cramér's V / Spearman / OLS</div>
+      </article>
+
+      <!-- Mapping -->
+      <article class="card">
+        <div class="tags">
+          <span class="tag">Geospatial</span><span class="tag">R</span><span class="tag">ACLED</span>
+        </div>
+        <h3>Mapping Conflict in R</h3>
+        <div class="ctx">INTR5083 · CEU · ACLED Africa, May 2025</div>
+        <p class="desc">Spatial analysis and choropleth/point mapping of conflict events using ACLED data and shapefiles in R, turning event-level political-violence data into readable geographic narratives.</p>
+        <div class="result">sf · shapefiles · event-level conflict mapping</div>
+        <div class="links">
+          <a class="btn" href="https://github.com/NahianIbnat-2000/INTR5083---The-Power-of-Mapping-R-for-Politics-and-International-Relations-for-Beginners" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-label">04 — Experience</div>
+    <h2>Experience</h2>
+
+    <div class="edu-item">
+      <div class="edu-top">
+        <span class="org">CEU Women in Business</span>
+        <span class="when">Central European University · Vienna</span>
+      </div>
+      <span class="role">Founding Member</span>
+      <ul class="exp-bullets">
+        <li>Co-founded a student club supporting women pursuing careers in business, finance, and data.</li>
+        <li>Helped shape the club's early direction, events, and member community.</li>
+      </ul>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-top">
+        <span class="org">Central European University</span>
+        <span class="when">2 years · Vienna</span>
+      </div>
+      <span class="role">Student Representative — Economics, Data &amp; Policy cohort</span>
+      <ul class="exp-bullets">
+        <li>Elected to represent the cohort for two consecutive years.</li>
+        <li>Channelled student feedback to faculty and helped coordinate between students and the programme.</li>
+      </ul>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-top">
+        <span class="org">Shabuj Global Education</span>
+        <span class="when">Nov 2023 – Dec 2023</span>
+      </div>
+      <span class="role">Language Proficiency Advisor</span>
+      <ul class="exp-bullets">
+        <li>Taught IELTS speaking, writing, reading, and listening sessions.</li>
+        <li>Developed module content and ran mock tests.</li>
+        <li>Delivered one-to-one counselling sessions.</li>
+      </ul>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-top">
+        <span class="org">Asian University for Women</span>
+        <span class="when">2020 – 2022 · Chattogram</span>
+      </div>
+      <span class="role">Teaching Assistant &amp; Peer Tutor</span>
+      <ul class="exp-bullets">
+        <li>TA across Introduction to Econometrics, Intermediate Microeconomics, Banking &amp; Finance, and Pre-Calculus (classes of 15–60+).</li>
+        <li>Led tutorials and lectures, graded coursework, and invigilated exams.</li>
+        <li>Peer tutor for Advanced Economics.</li>
+      </ul>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-top">
+        <span class="org">Prime Bank Ltd.</span>
+        <span class="when">Dec 2019 – Jan 2020 · Chattogram</span>
+      </div>
+      <span class="role">Intern</span>
+      <ul class="exp-bullets">
+        <li>Provided general accounting support and processed deposits and transactions.</li>
+        <li>Reviewed checks for endorsement and placed holds where needed.</li>
+        <li>Built Excel data models to support reporting.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-label">05 — Skills</div>
+    <h2>Toolbox</h2>
+    <div class="skills">
+      <div class="skillset">
+        <h4>Programming</h4>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">R</span><span class="chip">Stata</span>
+          <span class="chip">SQL</span><span class="chip">LaTeX</span><span class="chip">Git / GitHub</span>
+        </div>
+      </div>
+      <div class="skillset">
+        <h4>Econometrics &amp; Causal Inference</h4>
+        <div class="chips">
+          <span class="chip">Difference-in-Differences</span><span class="chip">Event Studies</span>
+          <span class="chip">Panel Data</span><span class="chip">HC3 / PCSE</span><span class="chip">Granger Causality</span>
+          <span class="chip">ARIMA / VAR / BVAR</span><span class="chip">Survey Design &amp; Primary Data</span>
+        </div>
+      </div>
+      <div class="skillset">
+        <h4>Machine Learning</h4>
+        <div class="chips">
+          <span class="chip">Scikit-learn</span><span class="chip">XGBoost</span><span class="chip">Random Forest</span>
+          <span class="chip">LASSO / Ridge</span><span class="chip">SHAP</span><span class="chip">LoRA / fine-tuning</span>
+        </div>
+      </div>
+      <div class="skillset">
+        <h4>Finance</h4>
+        <div class="chips">
+          <span class="chip">Fixed Income</span><span class="chip">Bond Pricing / Duration</span>
+          <span class="chip">Credit &amp; Banking</span><span class="chip">Sovereign Debt</span>
+          <span class="chip">Portfolio Theory</span><span class="chip">Factor Models (CAPM / FF)</span>
+        </div>
+      </div>
+      <div class="skillset">
+        <h4>Data &amp; Cloud</h4>
+        <div class="chips">
+          <span class="chip">AWS (S3, Comprehend, Translate)</span><span class="chip">FastAPI</span>
+          <span class="chip">Render</span><span class="chip">GDELT / BigQuery</span><span class="chip">Refinitiv Workspace</span>
+          <span class="chip">dbt / Snowflake</span><span class="chip">Databricks / Spark / Delta</span>
+          <span class="chip">DuckDB / SQL</span>
+        </div>
+      </div>
+      <div class="skillset">
+        <h4>Languages</h4>
+        <div class="chips">
+          <span class="chip">Bengali (Native)</span><span class="chip">English (C1 · IELTS 8.0)</span><span class="chip">Mandarin (Beginner)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-label">06 — Contact</div>
+    <h2>Get in touch</h2>
+    <p>Open to graduate analyst and data roles in finance, central banking, research, and policy. Based in Vienna / Budapest.</p>
+    <div class="cta-row">
+      <a class="cta primary" href="mailto:nahianibnat@example.com">Email me</a>
+      <a class="cta ghost" href="https://www.linkedin.com/in/nahian-ibnat-514a8a347/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="cta ghost" href="https://github.com/NahianIbnat-2000" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Nahian Ibnat · Vienna / Budapest</span>
+    <span>Built with plain HTML + CSS · hosted on GitHub Pages</span>
+  </div>
+</footer>
+
+<script>
+  // close mobile nav on link click
+  document.querySelectorAll('#nl a').forEach(function(a){
+    a.addEventListener('click',function(){document.getElementById('nl').classList.remove('open')});
+  });
+  // animate the spark draw on load (respect reduced motion)
+  (function(){
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var p=document.querySelector('.spark .draw');
+    if(!p) return;
+    var len=p.getTotalLength();
+    p.style.strokeDasharray=len; p.style.strokeDashoffset=len;
+    p.getBoundingClientRect(); // force layout
+    p.style.transition='stroke-dashoffset 1.9s cubic-bezier(.4,0,.2,1)';
+    requestAnimationFrame(function(){requestAnimationFrame(function(){p.style.strokeDashoffset='0';});});
+  })();
+</script>
+</body>
+</html>
