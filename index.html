@@ -21,6 +21,14 @@
     --signal:#0f8a52;       /* deeper green so it reads as clickable on white */
     --signal-dim:rgba(15,138,82,.10);
     --amber:#b07a18;        /* secondary, used sparingly for "null" */
+    /* soft pastel section tints + matching accents */
+    --tint-green:#eef6f0;   --acc-green:#0f8a52;
+    --tint-blue:#eef3fb;    --acc-blue:#2f6fd0;
+    --tint-violet:#f3eefb;  --acc-violet:#7b54c9;
+    --tint-amber:#fbf4e8;   --acc-amber:#b07a18;
+    --tint-rose:#fbeef1;    --acc-rose:#c44569;
+    --tint-teal:#eaf6f6;    --acc-teal:#1d8a8a;
+    --tint-sky:#ebf4f9;     --acc-sky:#2a86b8;
     --maxw:1080px;
     --display:'Space Grotesk',sans-serif;
     --body:'Inter',sans-serif;
@@ -52,7 +60,7 @@
   .navtoggle{display:none;background:none;border:0;color:var(--paper);font-size:22px;cursor:pointer}
 
   /* ---------- hero ---------- */
-  header.hero{padding:96px 0 72px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  header.hero{padding:96px 0 72px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;background:var(--tint-green)}
   .hero-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
   @media(min-width:820px){
     .hero-grid{grid-template-columns:1.35fr 1fr;gap:56px}
@@ -104,7 +112,18 @@
 
   /* ---------- section frame ---------- */
   section{padding:74px 0;border-bottom:1px solid var(--line)}
+
+  /* ---- Palette D: green lead + light blue support ---- */
+  #about{background:var(--tint-green)}
+  #education{background:var(--tint-blue)}
+  #projects{background:var(--ink)}
+  #experience{background:var(--tint-green)}
+  #leadership{background:var(--ink)}
+  #skills{background:var(--tint-blue)}
+  #contact{background:var(--tint-green)}
+
   .sec-label{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--signal);margin-bottom:8px}
+  #education .sec-label, #skills .sec-label{color:var(--acc-blue)}
   h2{font-family:var(--display);font-weight:600;color:var(--paper);font-size:clamp(26px,4vw,34px);letter-spacing:-.015em;margin:0 0 26px}
   .about p{max-width:680px;font-size:17px}
   .about p+p{margin-top:16px}
@@ -157,9 +176,9 @@
   .exp-bullets li::before{content:'';position:absolute;left:-14px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--signal)}
   .skills{display:grid;grid-template-columns:1fr;gap:22px}
   @media(min-width:680px){.skills{grid-template-columns:1fr 1fr}}
-  .skillset h4{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fog-2);margin:0 0 11px}
+  .skillset h4{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc-teal);margin:0 0 11px}
   .chips{display:flex;flex-wrap:wrap;gap:7px}
-  .chip{font-size:13px;padding:5px 11px;border-radius:6px;background:var(--ink-3);border:1px solid var(--line);color:var(--fog)}
+  .chip{font-size:13px;padding:5px 11px;border-radius:6px;background:var(--tint-blue);border:1px solid #d4e2f2;color:#1f4f9e}
 
   /* ---------- contact / footer ---------- */
   .contact p{max-width:560px;font-size:16.5px}
@@ -288,7 +307,7 @@
       </article>
 
       <!-- ===== GROUP 1: FINANCE & CAUSAL INFERENCE ===== -->
-      <div class="pgroup-label">Finance &amp; Causal Inference</div>
+      <div class="pgroup-label" style="color:var(--acc-green)">Finance &amp; Causal Inference</div>
       <p class="pgroup-sub">Asset pricing, factor models, macro forecasting, and applied econometrics.</p>
 
       <!-- Mean-variance / factor models -->
@@ -345,7 +364,7 @@
       </article>
 
       <!-- ===== GROUP 2: DATA SCIENCE & ENGINEERING ===== -->
-      <div class="pgroup-label">Data Science &amp; Engineering</div>
+      <div class="pgroup-label" style="color:var(--acc-blue)">Data Science &amp; Engineering</div>
       <p class="pgroup-sub">Machine learning, pipelines, and large-scale data processing.</p>
 
       <!-- Airbnb -->
@@ -424,7 +443,7 @@
       </article>
 
       <!-- ===== GROUP 3: POLICY & RESEARCH ===== -->
-      <div class="pgroup-label">Policy &amp; Research</div>
+      <div class="pgroup-label" style="color:var(--acc-rose)">Policy &amp; Research</div>
       <p class="pgroup-sub">Financial-stability policy, primary-data research, and geospatial analysis.</p>
 
       <!-- Policy brief -->
