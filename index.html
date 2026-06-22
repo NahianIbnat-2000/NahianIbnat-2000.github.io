@@ -196,6 +196,26 @@
   .chips{display:flex;flex-wrap:wrap;gap:7px}
   .chip{font-size:13px;padding:5px 11px;border-radius:6px;background:var(--tint-blue);border:1px solid #d4e2f2;color:#1f4f9e}
 
+  /* NEW: Visual skill tags with proficiency colors */
+  .skill-tags{display:flex;flex-wrap:wrap;gap:7px}
+  .skill-tag{
+    display:inline-block;padding:5px 12px;border-radius:20px;
+    font-size:13px;font-weight:500;
+    background:var(--ink-2);color:var(--paper);
+    border:1px solid var(--line);
+    transition:all .2s ease;
+  }
+  .skill-tag:hover{
+    background:var(--signal);color:#fff;border-color:var(--signal);
+    transform:translateY(-2px);
+  }
+  /* Language proficiency color coding */
+  .skill-tag.native{background:var(--acc-green);color:#fff;border-color:var(--acc-green)}
+  .skill-tag.fluent{background:var(--acc-blue);color:#fff;border-color:var(--acc-blue)}
+  .skill-tag.intermediate{background:var(--acc-teal);color:#fff;border-color:var(--acc-teal)}
+  .skill-tag.beginner{background:var(--tint-sky);color:var(--acc-sky);border-color:var(--acc-sky)}
+  .skill-tag.a1{background:var(--tint-violet);color:var(--acc-violet);border-color:var(--acc-violet)}
+
   /* ---------- contact / footer ---------- */
   .contact p{max-width:560px;font-size:16.5px}
   .contact .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
@@ -582,7 +602,7 @@
       <ul class="exp-bullets">
         <li>Core member of a student club supporting women pursuing careers in business, finance, and data.</li>
         <li>Helped shape the club's early direction, events, and member community.</li>
-        <li>Organized a conference on [TOPIC] with keynote speakers and panel sessions, featuring 10 international women panelists and drawing [N] attendees.</li>
+        <li>Organized a conference on <strong>Women Leadership</strong> with keynote speakers and panel sessions, featuring 10 international women panelists and drawing <strong>100+</strong> attendees.</li>
       </ul>
     </div>
 
@@ -620,47 +640,70 @@
     <div class="skills">
       <div class="skillset">
         <h4>Programming</h4>
-        <div class="chips">
-          <span class="chip">Python</span><span class="chip">R</span><span class="chip">Stata</span>
-          <span class="chip">SQL</span><span class="chip">LaTeX</span><span class="chip">Git / GitHub</span>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">R</span>
+          <span class="skill-tag">Stata</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">LaTeX</span>
+          <span class="skill-tag">Git / GitHub</span>
         </div>
       </div>
       <div class="skillset">
         <h4>Econometrics &amp; Causal Inference</h4>
-        <div class="chips">
-          <span class="chip">Difference-in-Differences</span><span class="chip">Event Studies</span>
-          <span class="chip">Panel Data</span><span class="chip">HC3 / PCSE</span><span class="chip">Granger Causality</span>
-          <span class="chip">ARIMA / VAR / BVAR</span><span class="chip">Survey Design &amp; Primary Data</span>
+        <div class="skill-tags">
+          <span class="skill-tag">Difference-in-Differences</span>
+          <span class="skill-tag">Event Studies</span>
+          <span class="skill-tag">Panel Data</span>
+          <span class="skill-tag">HC3 / PCSE</span>
+          <span class="skill-tag">Granger Causality</span>
+          <span class="skill-tag">ARIMA / VAR / BVAR</span>
+          <span class="skill-tag">Survey Design &amp; Primary Data</span>
         </div>
       </div>
       <div class="skillset">
         <h4>Machine Learning</h4>
-        <div class="chips">
-          <span class="chip">Scikit-learn</span><span class="chip">XGBoost</span><span class="chip">Random Forest</span>
-          <span class="chip">LASSO / Ridge</span><span class="chip">SHAP</span><span class="chip">LoRA / fine-tuning</span>
+        <div class="skill-tags">
+          <span class="skill-tag">Scikit-learn</span>
+          <span class="skill-tag">XGBoost</span>
+          <span class="skill-tag">Random Forest</span>
+          <span class="skill-tag">LASSO / Ridge</span>
+          <span class="skill-tag">SHAP</span>
+          <span class="skill-tag">LoRA / Fine-tuning</span>
         </div>
       </div>
       <div class="skillset">
         <h4>Finance</h4>
-        <div class="chips">
-          <span class="chip">Fixed Income</span><span class="chip">Bond Pricing / Duration</span>
-          <span class="chip">Credit &amp; Banking</span><span class="chip">Sovereign Debt</span>
-          <span class="chip">Portfolio Theory</span><span class="chip">Factor Models (CAPM / FF)</span>
+        <div class="skill-tags">
+          <span class="skill-tag">Fixed Income</span>
+          <span class="skill-tag">Bond Pricing / Duration</span>
+          <span class="skill-tag">Credit &amp; Banking</span>
+          <span class="skill-tag">Sovereign Debt</span>
+          <span class="skill-tag">Portfolio Theory</span>
+          <span class="skill-tag">Factor Models (CAPM / FF)</span>
         </div>
       </div>
       <div class="skillset">
         <h4>Data &amp; Cloud</h4>
-        <div class="chips">
-          <span class="chip">AWS (S3, Comprehend, Translate)</span><span class="chip">FastAPI</span>
-          <span class="chip">Render</span><span class="chip">GDELT / BigQuery</span><span class="chip">Refinitiv Workspace</span>
-          <span class="chip">dbt / Snowflake</span><span class="chip">Databricks / Spark / Delta</span>
-          <span class="chip">DuckDB / SQL</span>
+        <div class="skill-tags">
+          <span class="skill-tag">AWS (S3, Comprehend, Translate)</span>
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">Render</span>
+          <span class="skill-tag">GDELT / BigQuery</span>
+          <span class="skill-tag">Refinitiv Workspace</span>
+          <span class="skill-tag">dbt / Snowflake</span>
+          <span class="skill-tag">Databricks / Spark / Delta</span>
+          <span class="skill-tag">DuckDB / SQL</span>
         </div>
       </div>
       <div class="skillset">
         <h4>Languages</h4>
-        <div class="chips">
-          <span class="chip">Bengali (Native)</span><span class="chip">English (C2)</span><span class="chip">Hindi (Intermediate)</span><span class="chip">Mandarin (Beginner)</span><span class="chip">German (A1)</span>
+        <div class="skill-tags">
+          <span class="skill-tag native">Bengali</span>
+          <span class="skill-tag fluent">English</span>
+          <span class="skill-tag intermediate">Hindi</span>
+          <span class="skill-tag beginner">Mandarin</span>
+          <span class="skill-tag a1">German</span>
         </div>
       </div>
     </div>
